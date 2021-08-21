@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Library</title>
+        <link href="style.css" rel="stylesheet">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div id="container">
+            <nav>My Books</nav>
+            <div id="leftBar">
+                <h2 id="heading">Add New Book</h2>
+                <form>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" placeholder="i.e Harry Potter" name="title">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" placeholder="J.K. Rowling" name="author">
+                    <label for="pages">Pages</label>
+                    <input id="pages" type="number" min="1" placeholder="300" name="pages">
+                    <label for="read">Already read</label>
+                    <input type="checkbox" id="read" name="read" value="yes">
+                    <button id="submit" type="button">Add Book</button>
+                </form>
+            </div>
+            <div id="main">
+            </div>
+        </div>
+    </body>
+</html>
