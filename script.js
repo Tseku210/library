@@ -119,12 +119,38 @@ class MyLibrary {
         this.myLibrary.push(new Book(this.title.value, this.author.value, this.pages.value, this.read.checked))
         this.storeLocal()
     }
+
+    isFormValid = () => {
+        if ((!this.title.checkValidity()) || (!this.author.checkValidity()) || (!this.pages.checkValidity())) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    formAddErrorListener = (el) => {
+        el.addEventListener("input", () => {
+            if (!el.checkValidity()) {
+                el.setCustomValidity("not valid");
+                el.reportValidity();
+                el.setCustomValidity("")
+            } else {
+                el.setCustomValidity("");
+            }
+        })
+    }
+
     submitListener = () => {
         this.submitButton.addEventListener("click", () => {
-            this.addBookToLibrary()
-            this.refreshCards()
-            this.displayCards()
-            this.storeLocal()
+            if (this.isFormValid()) {
+                this.addBookToLibrary()
+                this.refreshCards()
+                this.displayCards()
+                this.storeLocal()
+            } else {
+                return;
+            }
+
         })
     }
     refreshCards = () => {
@@ -195,6 +221,9 @@ class MyLibrary {
         }
     }
     run = () => {
+        this.formAddErrorListener(this.title)
+        this.formAddErrorListener(this.author)
+        this.formAddErrorListener(this.pages)
         this.submitListener()
         this.restore()
     }
